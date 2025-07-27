@@ -6,4 +6,5 @@ export const useTaskStore = defineStore('quizStore', {
   }),
   actions: {
   },
+  persist: true,
 });
