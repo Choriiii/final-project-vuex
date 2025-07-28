@@ -1,6 +1,6 @@
 <template>
 <div class="quiz-page-container" v-if="questions.length">
-    <h1 id="quiz-cat">{{ currentCategory }}</h1>
+    <h1 id="quiz-cat">{{ questions[currentIndex - 1].category }}</h1>
     <quiz-index-compo :currentIndex="currentIndex" />
     <question-compo :question="questions[currentIndex - 1] || []" />
     <option-compo :options="questions[currentIndex - 1].options" @option-selected="handleOptionSelected" />
