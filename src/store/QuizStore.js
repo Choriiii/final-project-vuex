@@ -56,5 +56,10 @@ export const useQuizStore = defineStore('quizStore', {
       }
     },
   },
+  getters: {
+    score(state) {
+      return state.quizAnswers.reduce((sum, q) => sum + q.isCorrect, 0);
+    }
+  },
   persist: true,
 });

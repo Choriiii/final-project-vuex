@@ -59,6 +59,10 @@ export default {
     handleOptionSelected (option) {
       this.isCorrect = (option === this.questions[this.currentIndex - 1].correct_answer);
       this.showModal = true;
+      useQuizStore().quizAnswers[this.currentIndex - 1] = {
+        answer: option,
+        isCorrect: this.isCorrect ? 1 : 0
+      };
     },
     nextQuestion() {
       this.showModal = false;
