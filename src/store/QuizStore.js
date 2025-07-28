@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import axios from 'axios'
 import he from 'he';
+import { quizCategories } from '@/constants/QuizCategories';
 
 export const useQuizStore = defineStore('quizStore', {
   state: () => ({
@@ -12,12 +13,16 @@ export const useQuizStore = defineStore('quizStore', {
     async fetchQuestions(category = null, difficulty = null) {
 
         // Check if questions are already loaded for the given category and difficulty
-        if ( this.questions.length > 0 && 
-          ( category === null || this.questions[0].category === category ) &&
-          ( difficulty === null || this.questions[0].difficulty === difficulty )
-        ) {
-          return
+        if ( this.questions.length > 0 ) {
+          const storedCategory = quizCategories.find(c => c.name === this.questions[0].category)?.id;
+          if (( category === null || storedCategory === category ) &&
+            ( difficulty === null || this.questions[0].difficulty === difficulty )
+          ) {
+            return
+          }
         }
+
+        this.$reset()
 
         const params = {
             amount: 10,

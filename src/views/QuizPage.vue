@@ -53,7 +53,27 @@ export default {
     ...mapState(useQuizStore, ['questions']),
   },
   async mounted () {
-        await this.quizStore.fetchQuestions(this.category, this.difficulty)
+    await this.quizStore.fetchQuestions(this.category, this.difficulty)
+
+    const answers = this.quizStore.quizAnswers
+    let firstUnansweredIndex = -1;
+    for (let i = 0; i < this.currentIndex; i++) {
+      const a = answers?.[i] ?? null;
+      if (!a || a.answer == null || a.answer === '') {
+        firstUnansweredIndex = i;
+        break;
+      }
+    }
+    if (firstUnansweredIndex !== -1) {
+      this.currentIndex = firstUnansweredIndex + 1
+    }
+    this.quizStore.currentIndex = this.currentIndex
+    this.$router.replace({
+      query: {
+        ...this.$route.query,
+        index: this.currentIndex,
+      }
+    })
   },
   methods: {
     handleOptionSelected (option) {
