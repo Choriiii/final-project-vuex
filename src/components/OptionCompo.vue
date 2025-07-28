@@ -40,9 +40,10 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    padding: 10px;
+    padding: 20px;
     font-size: 1.2em;
     cursor: pointer;
     border: 1px solid #ccc;
+    text-align: center;
 }
 </style>

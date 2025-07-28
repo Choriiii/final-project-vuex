@@ -24,9 +24,9 @@ export default {
     margin: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    height: 30vh;
+    min-height: 30vh;
     width: 100%;
-    padding: 20px;
+    padding: 50px;
     
 }
 

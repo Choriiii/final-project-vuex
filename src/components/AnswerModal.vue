@@ -48,7 +48,7 @@ export default {
     border-radius: 10px;
     color: white;
     text-align: center;
-    height: 20vh;
+    min-height: 20vh;
     width: 50vw;
     border: 1px solid #ccc;
     border-radius: 10px;
