@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios'
+import he from 'he';
 
 export const useQuizStore = defineStore('quizStore', {
   state: () => ({
@@ -34,6 +35,9 @@ export const useQuizStore = defineStore('quizStore', {
                 }
                 return {
                     ...q,
+                    question: he.decode(q.question),
+                    correct_answer: he.decode(q.correct_answer),
+                    incorrect_answers: q.incorrect_answers.map(he.decode),
                     options
                 }
             })
