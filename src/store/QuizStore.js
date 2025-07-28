@@ -10,7 +10,14 @@ export const useQuizStore = defineStore('quizStore', {
   }),
   actions: {
     async fetchQuestions(category = null, difficulty = null) {
-        if (this.questions.length > 0) return
+
+        // Check if questions are already loaded for the given category and difficulty
+        if ( this.questions.length > 0 && 
+          ( category === null || this.questions[0].category === category ) &&
+          ( difficulty === null || this.questions[0].difficulty === difficulty )
+        ) {
+          return
+        }
 
         const params = {
             amount: 10,
