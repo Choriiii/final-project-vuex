@@ -8,7 +8,16 @@ const routes = [
         name:"home",
         component:HomeCompo
     },
-    { path: '/quiz/:page', name:'quiz', component: QuizPage },
+    { 
+        path: '/quiz',
+        name:'quiz',
+        component: QuizPage,
+        props: route => ({
+            category: parseInt(route.query.category),
+            difficulty: route.query.difficulty,
+            index: parseInt(route.query.index)
+        })
+    },
 ]
 
 const router = createRouter({
