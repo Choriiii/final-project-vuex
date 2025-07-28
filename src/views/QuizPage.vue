@@ -25,12 +25,11 @@ export default {
   components: { QuizIndexCompo, QuestionCompo, OptionCompo, AnswerModal },
   props: {
     category: {
-      type: Number,
-      default: 9 // General Knowledge
+      type: [Number, String],
+      default: null,
     },
     difficulty: {
       type: String,
-      default: 'medium'
     },
     index: {
       type: Number,
@@ -93,8 +92,6 @@ export default {
         this.$router.push({
           query: {
             ...this.$route.query,
-            category: this.currentCategory,
-            difficulty: this.difficulty,
             index: this.currentIndex,
           }
         });

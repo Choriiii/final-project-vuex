@@ -14,7 +14,7 @@ const routes = [
         name:'quiz',
         component: QuizPage,
         props: route => ({
-            category: parseInt(route.query.category),
+            category: route.query.category,
             difficulty: route.query.difficulty,
             index: parseInt(route.query.index)
         })
