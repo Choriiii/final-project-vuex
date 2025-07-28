@@ -27,7 +27,10 @@ export const useQuizStore = defineStore('quizStore', {
             if (res.data.response_code !== 0) throw new Error('Failed to load quiz questions')
 
             this.questions = res.data.results.map(q => {
-                const options = [...q.incorrect_answers, q.correct_answer]
+                const options = [
+                  ...q.incorrect_answers.map(ans => he.decode(ans)),
+                  he.decode(q.correct_answer)
+                ]
 
                 for (let i = options.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1))
@@ -37,7 +40,6 @@ export const useQuizStore = defineStore('quizStore', {
                     ...q,
                     question: he.decode(q.question),
                     correct_answer: he.decode(q.correct_answer),
-                    incorrect_answers: q.incorrect_answers.map(he.decode),
                     options
                 }
             })
