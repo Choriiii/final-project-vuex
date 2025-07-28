@@ -13,10 +13,25 @@ import { useQuizStore } from '@/store/QuizStore.js'
 export default {
     computed: {
         quizStore() {
-        return useQuizStore()
+          return useQuizStore()
         }
+    },
+    mounted () {
+      const answerLength = this.quizStore.quizAnswers.length
+      if ( answerLength == 0 ) {
+        this.$router.push('/') // move to category choice page
+      } else if ( answerLength < 10 ) {
+        this.$router.push({
+          name: 'quiz',
+          query: {
+            category: this.quizStore.currentCategory,
+            difficulty: this.quizStore.currentDifficulty,
+            index: this.quizStore.currentIndex,
+          }
+        })
+      }
     }
-}
+  }
 </script>
 
 <style>

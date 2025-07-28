@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia';
 import axios from 'axios'
 import he from 'he';
-import { quizCategories } from '@/constants/QuizCategories';
 
 export const useQuizStore = defineStore('quizStore', {
   state: () => ({
     questions: [],
+    currentCategory: null,
+    currentDifficulty: null,
     currentIndex: 1,
     quizAnswers: [],
   }),
@@ -14,9 +15,8 @@ export const useQuizStore = defineStore('quizStore', {
 
         // Check if questions are already loaded for the given category and difficulty
         if ( this.questions.length > 0 ) {
-          const storedCategory = quizCategories.find(c => c.name === this.questions[0].category)?.id;
-          if (( category === null || storedCategory === category ) &&
-            ( difficulty === null || this.questions[0].difficulty === difficulty )
+          if (( category === null || this.currentCategory === category ) &&
+            ( difficulty === null || this.currentDifficulty === difficulty )
           ) {
             return
           }
@@ -35,7 +35,6 @@ export const useQuizStore = defineStore('quizStore', {
             const res = await axios.get('https://opentdb.com/api.php', {
                 params: params
             })
-            console.log('Quiz questions loaded:', res.data)
             if (res.data.response_code !== 0) throw new Error('Failed to load quiz questions')
 
             this.questions = res.data.results.map(q => {
@@ -55,8 +54,8 @@ export const useQuizStore = defineStore('quizStore', {
                     options
                 }
             })
-            console.log('Quiz questions:', this.questions)
-
+            this.currentCategory = category;
+            this.currentDifficulty = difficulty;
         } catch (e) {
             console.error('Failed load quiz:', e)
         }
