@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import HomeCompo from "@/components/HomeCompo.vue";
 import QuizPage from '@/views/QuizPage.vue';
+import ResultPage from '@/views/ResultPage.vue';
 
 const routes = [
     {
@@ -17,6 +18,11 @@ const routes = [
             difficulty: route.query.difficulty,
             index: parseInt(route.query.index)
         })
+    },
+    { 
+        path: '/result',
+        name:'result',
+        component: ResultPage,
     },
 ]
 
