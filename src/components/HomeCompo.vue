@@ -1,12 +1,14 @@
 <template>
-  <div>
-     <div>
+  <div >
+     <div id="fir-div">
     <header>
         <div>
-        <p>Welcome!!</p>
-        <h1 id="userName"></h1>
+        <h1>Welcome!!</h1>
         </div>
-        <img src="../assets/Avatar.svg" alt="Avatar">
+        <router-link to="/ProfilePage" class="profile-link">
+      <img src="../assets/Avatar.svg" alt="Avatar">
+    </router-link>
+        
         
     </header>
     <div id="J-i">
@@ -92,7 +94,9 @@
         </div>
         <div>
             <h4>FOLLOW US</h4>
-            <i class="fa-brands fa-instagram fa-lg" style="color: #6e2323;"></i>
+        <i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i>          
+        <i class="fa-brands fa-facebook-f fa-xl" style="color: #ffffff;"></i>
+        <i class="fa-brands fa-tiktok fa-xl" style="color: #ffffff;"></i>
         </div>
     </footer>
   </div>
@@ -114,6 +118,7 @@ body {
     background-color: rgb(73, 3, 81);
     font-family: 'Inter', sans-serif;
     margin: 0;
+      text-align: center;
 
 }
 
@@ -122,7 +127,6 @@ main {
     padding: 5px;
     padding: 30px 20px;
     color: rgba(218, 218, 218, 1);
-    text-align: center;
     display: flex;
     gap: 30px;
     flex-direction: column;
@@ -137,7 +141,6 @@ h2 {
     border-radius: 20px;
     width: 70%;
     margin: auto;
-    text-align: center;
     padding: 10px;
     border: solid black;
 }
@@ -145,16 +148,15 @@ h2 {
 #J-i h2 {
     color: rgb(79, 77, 77);
     font-size: 26px;
-    margin: 0;
+
 }
 
 #J-i button {
     font-size: 15px;
     background-color: rgba(133, 141, 113, 1);
     border-radius: 10px;
-    border: none;
+    border: solid 2px;
     padding: 7px 15px;
-    margin-top: 10px;
 }
 
 /* header styles */
@@ -165,14 +167,10 @@ header {
     padding: 30px 30px;
 }
 
-header p {
-    color: rgba(255, 255, 255, 1);
-    font-size: 20px;
-}
-
 header h1 {
-    font-size: 26px;
+    font-size: 30px;
     color: white;
+    margin-top: 17px;
 }
 
 /* section 1 styles */
@@ -254,46 +252,51 @@ footer {
     color: rgba(133, 141, 113, 1);
     background-color: rgb(82, 33, 88);
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-
+i{
+    margin-right: 15px;
+    margin-top: 20px;
+}
 
 /* Desktop Styles */
 
 @media (min-width: 1024px) {
+    h2,h3{
+        margin-bottom: 20px;
+    }
     main {
         padding: 30px 80px;
-    }
-    body > div{
-        display: flex;
-        gap: 250px;
-
-    }
-    header{
-        margin-left: 80px;
         gap: 70px;
+    }
+    
+    header{
+        justify-content: space-between;
         background-color: rgb(82, 33, 88);
-        padding: 40px;
+        padding: 20px 40px;
         border-radius: 10px;
-        margin-top: 40px;
+        margin-bottom: 45px;
       }
     header h1 {
         font-size: 35px;
     }
-
     header p {
         font-size: 30px;
     }
     #J-i{
-        text-align: left;
         padding: 30px;
         width: 30%;
-        margin: 50px 0px;
     }
     #section-1 p{
         font-size: 24px;
     }
     #section-2 {
         padding: 10%;
+        width: 80%;
+        margin: auto;
+        
     }
     #section-2 h2{
         font-size: 50px;
@@ -312,7 +315,13 @@ footer {
         flex-direction: row;
         gap: 30px;
     }
-
+    footer{
+        flex-direction: row;
+        gap: 150px;
+        padding: 40px;
+        margin-top: 70px;
+        
+    }
 
 }
 

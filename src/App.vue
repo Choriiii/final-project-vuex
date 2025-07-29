@@ -1,14 +1,6 @@
 <template>
-<div>
-    <ul>
-      <li>
-        <router-link to="/">Home page</router-link>
-      </li>
-       <li>
-        <router-link to="/ProfilePage">Profile page</router-link>
-      </li>
-      
-    </ul>
+<div id="body">
+    
     <router-view />
   </div>
   
@@ -25,6 +17,9 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+#body{
+  width: 100%;
 }
 
 </style>
