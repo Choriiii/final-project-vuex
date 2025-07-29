@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import HomeCompo from "@/components/HomeCompo.vue";
 import ProfileCompo from "@/components/ProfileCompo.vue";
 import QuizPage from '@/views/QuizPage.vue';
+import ResultPage from '@/views/ResultPage.vue';
 
 const routes = [
     {
@@ -9,15 +10,26 @@ const routes = [
         name:"home",
         component:HomeCompo
     },
-
     {
         path:"/profilepage",
         name:"ProfilePage",
         component:ProfileCompo
     },
-
-    { path: '/quiz/:page', name:'quiz', component: QuizPage },
-
+    { 
+        path: '/quiz',
+        name:'quiz',
+        component: QuizPage,
+        props: route => ({
+            category: route.query.category,
+            difficulty: route.query.difficulty,
+            index: parseInt(route.query.index)
+        })
+    },
+    { 
+        path: '/result',
+        name:'result',
+        component: ResultPage,
+    },
 ]
 
 const router = createRouter({
