@@ -1,8 +1,14 @@
 <template>
   <div class="result-page-container">
-    <h1>Result</h1>
-    <div>
-        <p>Your score is {{ quizStore.score }}</p>
+    <div class="result-card">
+      <h1>Result</h1>
+      <div class="score">
+        <p>Your score is <span>{{ quizStore.score }}</span></p>
+      </div>
+      <div class="result-actions">
+        <router-link class="btn" to="/">Choose Category</router-link>
+        <router-link class="btn" to="/">Home</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -38,13 +44,64 @@ export default {
 .result-page-container {
     display: flex;
     position: relative;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100vw;
-    height: 100vh;
-    padding: 5vh 20vw;
+    min-height: 80vh;
     color: white;
     gap: 30px;
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 320px;
+  max-width: 90vw;
+  background: rgba(255,255,255,0.13);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  border-radius: 24px;
+  padding: 48px 32px;
+  color: #fff;
+}
+
+.result-card h1 {
+  font-size: 2.5rem;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+
+.score p {
+  font-size: 1.3rem;
+  margin-bottom: 32px;
+}
+
+.score span {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #ffd700;
+}
+
+.result-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  background: #fff;
+  color: #2575fc;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(31,38,135,0.15);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background: #2575fc;
+  color: #fff;
 }
 
 </style>
