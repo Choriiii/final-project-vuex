@@ -6,8 +6,8 @@
         <p>Your score is <span>{{ quizStore.score }}</span></p>
       </div>
       <div class="result-actions">
-        <router-link class="btn" to="/">Choose Category</router-link>
-        <router-link class="btn" to="/">Home</router-link>
+        <button class="btn" @click="goToCategories">Choose Category</button>
+        <button class="btn" @click="goHome">Home</button>
       </div>
     </div>
   </div>
@@ -35,6 +35,16 @@ export default {
             index: this.quizStore.currentIndex,
           }
         })
+      }
+    },
+    methods: {
+      goToCategories() {
+        this.quizStore.$reset()
+        this.$router.push('/quiz')
+      },
+      goHome() {
+        this.quizStore.$reset()
+        this.$router.push('/')
       }
     }
   }
