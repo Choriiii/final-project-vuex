@@ -33,7 +33,7 @@ export default {
             const answerObj = this.quizStore.quizAnswers[this.currentIndex - 1];
             return answerObj && answerObj.answer === option;
         }
-    },
+    }
 }
 </script>
 

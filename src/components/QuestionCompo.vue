@@ -26,8 +26,7 @@ export default {
     min-height: 30vh;
     width: 100%;
     padding: 50px;
-    background-color: rgba(255, 255, 255, 0.1)
-    
+    background-color: rgba(255, 255, 255, 0.1)    
 }
 
 #question-wrapper p {

@@ -92,6 +92,8 @@ export default {
         this.$router.push({
           query: {
             ...this.$route.query,
+            category: this.currentCategory,
+            difficulty: this.difficulty,
             index: this.currentIndex,
           }
         });

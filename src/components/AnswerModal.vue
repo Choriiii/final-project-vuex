@@ -26,7 +26,7 @@ export default {
         currentIndex: {
             type: Number,
             required: true
-        },
+        }
     },
     methods: {
         nextQuestion() {
@@ -35,7 +35,7 @@ export default {
         isActive(option) {
           return localStorage.getItem('selectedAnswer') === option;
         }
-    },
+    }   
 }
 </script>
 
@@ -96,9 +96,10 @@ export default {
 }
 
 #answer-btn-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 20px;
 }
 
 #answer-btn-wrapper button {
@@ -129,8 +130,8 @@ export default {
     border-radius: 16px;
   }
   #answer-btn-wrapper {
-  justify-content: center;
- }
+    justify-content: center;
+  }
 }
 
 </style>

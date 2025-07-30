@@ -38,7 +38,6 @@ export const useQuizStore = defineStore('quizStore', {
                   ...q.incorrect_answers.map(ans => he.decode(ans)),
                   he.decode(q.correct_answer)
                 ]
-
                 for (let i = options.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1))
                     ;[options[i], options[j]] = [options[j], options[i]]
