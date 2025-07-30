@@ -3,12 +3,18 @@ import HomeCompo from "@/components/HomeCompo.vue";
 import ProfileCompo from "@/components/ProfileCompo.vue";
 import QuizPage from '@/views/QuizPage.vue';
 import ResultPage from '@/views/ResultPage.vue';
+import QuizApp from '@/views/QuizApp.vue';
 
 const routes = [
     {
         path:"/",
         name:"home",
         component:HomeCompo
+    },
+    {
+        path:"/app",
+        name:"app",
+        component:QuizApp
     },
     {
         path:"/profilepage",
