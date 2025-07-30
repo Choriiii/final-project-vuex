@@ -27,7 +27,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 1vw;
+    flex-wrap: wrap;
+    margin-bottom: 1vh;
 }
 
 .quiz-index {
@@ -43,6 +45,17 @@ export default {
 .quiz-index.current-index {
     background-color: #ffccdb;
     color: black;
+}
+
+@media (max-width: 600px) {
+    #quiz-index-wrapper {
+        gap: 2vw;
+    }
+    .quiz-index {
+        width: 1.8rem;
+        height: 1.8rem;
+        font-size: 1rem;
+    }
 }
 
 </style>

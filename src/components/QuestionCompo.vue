@@ -22,11 +22,11 @@ export default {
     align-items: center;
     justify-content: center;
     margin: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 20px;
     min-height: 30vh;
     width: 100%;
     padding: 50px;
+    background-color: rgba(255, 255, 255, 0.1)
     
 }
 

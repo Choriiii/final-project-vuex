@@ -52,14 +52,14 @@ export default {
 
 <style>
 .result-page-container {
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    min-height: 80vh;
-    color: white;
-    gap: 30px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 80vh;
+  color: white;
+  gap: 30px;
 }
 
 .result-card {
@@ -98,8 +98,8 @@ export default {
 }
 
 .btn {
-  background: #fff;
-  color: #2575fc;
+  background: #ffccdb;
+  color: rgb(79, 77, 77);
   padding: 12px 28px;
   border-radius: 8px;
   text-decoration: none;
@@ -110,8 +110,8 @@ export default {
 }
 
 .btn:hover {
-  background: #2575fc;
-  color: #fff;
+  background: #FDB94B;
+  color: rgb(79, 77, 77);
 }
 
 </style>

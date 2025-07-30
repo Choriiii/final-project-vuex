@@ -111,7 +111,27 @@ export default {
     height: 100vh;
     padding: 5vh 20vw;
     color: white;
-    gap: 30px;
+    gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .quiz-page-container {
+        padding: 5vh 10vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .quiz-page-container {
+        padding: 5vh 4vw;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .quiz-page-container {
+        padding: 5vh 2vw;
+        gap: 1rem;
+    }
 }
 
 </style>
