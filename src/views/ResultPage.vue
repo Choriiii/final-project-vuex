@@ -35,6 +35,9 @@ export default {
             index: this.quizStore.currentIndex,
           }
         })
+      } else {
+        this.quizStore.isProgressing = false
+        this.quizStore.saveToLocal()
       }
     },
     methods: {

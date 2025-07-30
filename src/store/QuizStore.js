@@ -4,11 +4,13 @@ import he from 'he';
 
 export const useQuizStore = defineStore('quizStore', {
   state: () => ({
+    userId: null,
     questions: [],
     currentCategory: null,
     currentDifficulty: null,
     currentIndex: 1,
     quizAnswers: [],
+    isProgressing: true
   }),
   actions: {
     async fetchQuestions(category = null, difficulty = null) {
@@ -19,7 +21,8 @@ export const useQuizStore = defineStore('quizStore', {
           this.currentDifficulty === difficulty ) return
 
         this.$reset()
-
+        this.setUserId("test")
+        
         const params = {
             amount: 10,
             type: 'multiple',
@@ -62,6 +65,27 @@ export const useQuizStore = defineStore('quizStore', {
         this.currentIndex++
       }
     },
+    setUserId(userId) {
+      console.log("quizId", userId)
+      this.userId = userId;
+      console.log("quiz", this.userId)
+    },
+    saveIfInProgress() {
+      if ( (this.questions.length && this.quizAnswers.length < this.questions.length) || this.isProgressing ) {
+        localStorage.setItem(`quiz_${this.userId}`, JSON.stringify(this.$state))
+      } else {
+        localStorage.removeItem(`quiz_${this.userId}`)
+      }
+    },
+    saveToLocal() {
+      if (!this.userId) return
+      localStorage.setItem(`quiz_${this.userId}`, JSON.stringify(this.$state))
+    },
+    loadFromLocal(saved) {
+      if (!saved) return
+
+      this.$patch(JSON.parse(saved))
+    }
   },
   getters: {
     score(state) {

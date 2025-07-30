@@ -89,6 +89,7 @@ export default {
       if (this.currentIndex < 10) {
         this.currentIndex++;
         useQuizStore().currentIndex = this.currentIndex;
+        useQuizStore().saveToLocal()
         this.$router.push({
           query: {
             ...this.$route.query,
