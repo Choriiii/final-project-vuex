@@ -13,7 +13,6 @@ export const useQuizStore = defineStore('quizStore', {
   actions: {
     async fetchQuestions(category = null, difficulty = null) {
 
-        // Check if questions are already loaded for the given category and difficulty
         if ( this.questions.length > 0 &&
           this.currentCategory == category &&
           this.currentDifficulty === difficulty ) return
