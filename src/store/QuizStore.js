@@ -45,6 +45,7 @@ export const useQuizStore = defineStore('quizStore', {
                 }
                 return {
                     ...q,
+                    category: he.decode(q.category),
                     question: he.decode(q.question),
                     correct_answer: he.decode(q.correct_answer),
                     options
