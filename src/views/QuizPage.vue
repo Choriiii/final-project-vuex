@@ -89,9 +89,12 @@ export default {
       if (this.currentIndex < 10) {
         this.currentIndex++;
         useQuizStore().currentIndex = this.currentIndex;
+        useQuizStore().saveToLocal()
         this.$router.push({
           query: {
             ...this.$route.query,
+            category: this.currentCategory,
+            difficulty: this.difficulty,
             index: this.currentIndex,
           }
         });
@@ -111,7 +114,27 @@ export default {
     height: 100vh;
     padding: 5vh 20vw;
     color: white;
-    gap: 30px;
+    gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .quiz-page-container {
+        padding: 5vh 10vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .quiz-page-container {
+        padding: 5vh 4vw;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .quiz-page-container {
+        padding: 5vh 2vw;
+        gap: 1rem;
+    }
 }
 
 </style>

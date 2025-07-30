@@ -1,22 +1,14 @@
 <template>
   <div class="result-page-container">
-    <h1>Results</h1>
-    
-    <div v-if="quizStore.quizAnswers.length === 10">
-      <p>Quiz completed!</p>
-      <p>Your score is {{ quizStore.score }}/10</p>
-    </div>
-    
-    <div v-else-if="quizStore.quizAnswers.length > 0 && quizStore.quizAnswers.length < 10">
-      <p>Quiz in progress...</p>
-      <p>You have answered {{ quizStore.quizAnswers.length }}/10 questions.</p>
-      <p>Complete the quiz to see your final results!</p>
-    </div>
-    
-    <div v-else>
-      <p>No quiz results available yet.</p>
-      <p>Take a quiz first to see your results!</p>
-      <button @click="goToQuizApp" class="quiz-btn">Take Quiz</button>
+    <div class="result-card">
+      <h1>Result</h1>
+      <div class="score">
+        <p>Your score is <span>{{ quizStore.score }}</span></p>
+      </div>
+      <div class="result-actions">
+        <button class="btn" @click="goToCategories">Choose Category</button>
+        <button class="btn" @click="goHome">Home</button>
+      </div>
     </div>
   </div>
 </template>
@@ -30,9 +22,32 @@ export default {
           return useQuizStore()
         }
     },
+    mounted () {
+      const answerLength = this.quizStore.quizAnswers.length
+      if ( answerLength == 0 ) {
+        this.$router.push('/') // move to category choice page
+      } else if ( answerLength < 10 ) {
+        this.$router.push({
+          name: 'quiz',
+          query: {
+            category: this.quizStore.currentCategory,
+            difficulty: this.quizStore.currentDifficulty,
+            index: this.quizStore.currentIndex,
+          }
+        })
+      } else {
+        this.quizStore.isProgressing = false
+        this.quizStore.saveToLocal()
+      }
+    },
     methods: {
-      goToQuizApp() {
-        this.$router.push({ name: 'app' })
+      goToCategories() {
+        this.quizStore.$reset()
+        this.$router.push('/quiz')
+      },
+      goHome() {
+        this.quizStore.$reset()
+        this.$router.push('/')
       }
     }
   }
@@ -40,33 +55,65 @@ export default {
 
 <style>
 .result-page-container {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    padding: 5vh 20vw;
-    color: white;
-    gap: 30px;
-    background-color: rgb(73, 3, 81);
-}
-
-.quiz-btn {
-  padding: 12px 24px;
-  background-color: #ffccdb;
-  color: #6e2323;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 20px;
-  transition: all 0.3s ease;
-}
-
-.quiz-btn:hover {
-  background-color: rgb(82, 33, 88);
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 80vh;
   color: white;
-  transform: translateY(-2px);
+  gap: 30px;
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 320px;
+  max-width: 90vw;
+  background: rgba(255,255,255,0.13);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  border-radius: 24px;
+  padding: 48px 32px;
+  color: #fff;
+}
+
+.result-card h1 {
+  font-size: 2.5rem;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+
+.score p {
+  font-size: 1.3rem;
+  margin-bottom: 32px;
+}
+
+.score span {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #ffd700;
+}
+
+.result-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  background: #ffccdb;
+  color: rgb(79, 77, 77);
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(31,38,135,0.15);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background: #FDB94B;
+  color: rgb(79, 77, 77);
 }
 </style>
