@@ -25,7 +25,7 @@ export default {
     mounted () {
       const answerLength = this.quizStore.quizAnswers.length
       if ( answerLength == 0 ) {
-        this.$router.push('/') // move to category choice page
+        this.$router.push('/app')
       } else if ( answerLength < 10 ) {
         this.$router.push({
           name: 'quiz',
@@ -43,7 +43,7 @@ export default {
     methods: {
       goToCategories() {
         this.quizStore.$reset()
-        this.$router.push('/quiz')
+        this.$router.push('/app')
       },
       goHome() {
         this.quizStore.$reset()
