@@ -3,11 +3,19 @@ import { useQuizStore } from '@/store/QuizStore.js'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    user: null
-  }),
+    userId: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: ''
+}),
   actions: {
    login(userData){
-    this.user = userData
+    this.userId = userData.userId
+    this.firstName = userData.firstName
+    this.lastName = userData.lastName
+    this.email = userData.email
+    this.phone = userData.phone
 
     // load or make user's quizStore
     const quizStore = useQuizStore()
@@ -24,7 +32,7 @@ export const useUserStore = defineStore('user', {
    loadUser(){
     const savedUser =localStorage.getItem('user')
     if (savedUser) {
-        this.user =JSON.parse(savedUser)
+      this.$patch(JSON.parse(savedUser))
     }
    },
    logout(){
@@ -33,13 +41,13 @@ export const useUserStore = defineStore('user', {
     quizStore.saveIfInProgress()
     localStorage.removeItem('quizStore')
 
-    this.user = null
+    this.$reset()
     localStorage.removeItem('user')
    }
   },
   getters: {
     isLogin(state) {
-      return state.user && state.user.userId
+      return state && state.userId
     }
   },
   persist: true,

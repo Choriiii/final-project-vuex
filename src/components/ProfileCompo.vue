@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!user" id="main-div">
+    <div v-if="!user?.userId" id="main-div">
       <h2>Complete your profile</h2>
       <form @submit.prevent="handleSubmit">
         <div class="form-group">
@@ -69,7 +69,7 @@ export default {
   
   computed: {
   user() {
-    return useUserStore().user
+    return useUserStore()
   }
 },
   

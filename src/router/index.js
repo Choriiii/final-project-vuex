@@ -57,7 +57,7 @@ router.beforeEach((to, from, next) => {
   const publicPages = ['home', 'ProfilePage'];
   const authRequired = !publicPages.includes(to.name);
 
-  if (authRequired && !userStore.user) {
+  if (authRequired && !userStore?.userId) {
     next({ name: 'ProfilePage' });
   } else {
     next();
