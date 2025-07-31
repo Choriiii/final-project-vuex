@@ -30,6 +30,7 @@ export default {
     },
     difficulty: {
       type: String,
+      default: null
     },
     index: {
       type: Number,
@@ -38,7 +39,6 @@ export default {
 },
   data () {
     return {
-        currentCategory: this.category || 9,
         currentIndex: this.index || 1,
         quizAnswers: [],
         showModal: false,
@@ -52,7 +52,16 @@ export default {
     ...mapState(useQuizStore, ['questions']),
   },
   async mounted () {
-    await this.quizStore.fetchQuestions(this.category, this.difficulty)
+    
+    this.currentCategory = this.category || this.quizStore.currentCategory || null
+    this.currentDifficulty = this.difficulty || this.quizStore.currentDifficulty || null
+    if (
+      this.questions.length < 10 ||
+      this.quizStore.currentCategory != this.currentCategory ||
+      this.quizStore.currentDifficulty != this.currentDifficulty
+    ) {
+      await this.quizStore.fetchQuestions(this.currentCategory,this.currentDifficulty)
+    }
 
     const answers = this.quizStore.quizAnswers
     let firstUnansweredIndex = -1;
@@ -70,6 +79,8 @@ export default {
     this.$router.replace({
       query: {
         ...this.$route.query,
+        category: this.currentCategory,
+        difficulty: this.currentDifficulty,
         index: this.currentIndex,
       }
     })
@@ -94,7 +105,7 @@ export default {
           query: {
             ...this.$route.query,
             category: this.currentCategory,
-            difficulty: this.difficulty,
+            difficulty: this.currentDifficulty,
             index: this.currentIndex,
           }
         });

@@ -15,10 +15,6 @@ export const useQuizStore = defineStore('quizStore', {
   actions: {
     async fetchQuestions(category = null, difficulty = null) {
 
-        if ( this.questions.length > 0 &&
-          this.currentCategory == category &&
-          this.currentDifficulty === difficulty ) return
-
         this.$reset()
         this.setUserId("test")
         
