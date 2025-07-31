@@ -89,6 +89,9 @@ export const useQuizStore = defineStore('quizStore', {
   getters: {
     score(state) {
       return state.quizAnswers.reduce((sum, q) => sum + q.isCorrect, 0);
+    },
+    isUncomplete(state) {
+      return state.questions.length == 10 && state.isProgressing
     }
   },
   persist: true,

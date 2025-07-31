@@ -8,7 +8,6 @@ export const useUserStore = defineStore('user', {
   actions: {
    login(userData){
     this.user = userData
-    localStorage.setItem('user', JSON.stringify(userData))
 
     // load or make user's quizStore
     const quizStore = useQuizStore()
@@ -37,5 +36,11 @@ export const useUserStore = defineStore('user', {
     this.user = null
     localStorage.removeItem('user')
    }
-  }
+  },
+  getters: {
+    isLogin(state) {
+      return state.user && state.user.userId
+    }
+  },
+  persist: true,
 })
