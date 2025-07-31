@@ -3,7 +3,7 @@
      <div id="fir-div">
     <div id="J-i">
         <h2>Let's start</h2>
-        <button>Join</button>
+        <router-link to="/app" id="j-1-btn">Join</router-link>
     </div>
     </div>
     <main>
@@ -141,12 +141,13 @@ h2 {
 
 }
 
-#J-i button {
+#j-1-btn {
     font-size: 15px;
     background-color: rgba(133, 141, 113, 1);
     border-radius: 10px;
     border: solid 2px;
     padding: 7px 15px;
+    text-decoration: none;
 }
 
 /* section 1 styles */
