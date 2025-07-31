@@ -1,7 +1,7 @@
 <template>
 <div id="body">
     <header>
-      <router-link to="/" class="profile-link">
+      <router-link to="/" class="router-link">
         <h1>Quiz App</h1>
       </router-link>
       <div id="right-container">
@@ -12,7 +12,7 @@
         >
           Back to Quiz
         </router-link>
-        <router-link to="/ProfilePage" class="profile-link">
+        <router-link to="/ProfilePage" class="router-link">
           <img src="@/assets/Avatar.svg" alt="Avatar" id="avatar" />
         </router-link>
       </div>
@@ -51,6 +51,13 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+
+.router-link:focus,
+.router-link:active {
+  outline: none;
+  text-decoration: none;
+}
+
 #body{
   width: 100%;
 }
@@ -68,6 +75,8 @@ header {
 header h1 {
     font-size: 30px;
     color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 #right-container {
