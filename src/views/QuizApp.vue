@@ -1,16 +1,5 @@
 <template>
   <div id="quiz-app">
-    <header id="quiz-header">
-      <h1>Quiz App</h1>
-      <div class="nav-buttons">
-        <button @click="goHome" class="nav-btn">Home</button>
-        <button @click="goProfile" class="nav-btn">Profile</button>
-      </div>
-      <div id="avatar-container">
-        <img src="@/assets/Avatar.svg" alt="Avatar" id="avatar" />
-      </div>
-    </header>
-
     <div id="quiz-banner">
       <h2>Test Your Knowledge</h2>
       <p>Select a category and difficulty to start</p>
@@ -103,46 +92,6 @@ export default {
   background-color: rgb(73, 3, 81);
   min-height: 100vh;
   color: white;
-}
-
-#quiz-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 30px;
-  background-color: rgb(82, 33, 88);
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.nav-btn {
-  padding: 8px 16px;
-  background-color: transparent;
-  color: white;
-  border: 1px solid #ffccdb;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.nav-btn:hover {
-  background-color: #ffccdb;
-  color: #6e2323;
-}
-
-#quiz-header h1 {
-  margin: 0;
-  font-size: 2rem;
-}
-
-#avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
 }
 
 #quiz-banner {

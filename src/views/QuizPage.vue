@@ -112,27 +112,27 @@ export default {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    padding: 5vh 20vw;
+    padding: 10px 20vw;
     color: white;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 @media (max-width: 1200px) {
     .quiz-page-container {
-        padding: 5vh 10vw;
+        padding: 10px 10vw;
     }
 }
 
 @media (max-width: 800px) {
     .quiz-page-container {
-        padding: 5vh 4vw;
+        padding: 10px 4vw;
         gap: 1rem;
     }
 }
 
 @media (max-width: 500px) {
     .quiz-page-container {
-        padding: 5vh 2vw;
+        padding: 10px 2vw;
         gap: 1rem;
     }
 }

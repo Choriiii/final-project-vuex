@@ -1,16 +1,6 @@
 <template>
   <div >
      <div id="fir-div">
-    <header>
-        <div>
-        <h1>Welcome!!</h1>
-        </div>
-        <router-link to="/ProfilePage" class="profile-link">
-      <img src="../assets/Avatar.svg" alt="Avatar">
-    </router-link>
-        
-        
-    </header>
     <div id="J-i">
         <h2>Let's start</h2>
         <button>Join</button>
@@ -159,20 +149,6 @@ h2 {
     padding: 7px 15px;
 }
 
-/* header styles */
-
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 30px;
-}
-
-header h1 {
-    font-size: 30px;
-    color: white;
-    margin-top: 17px;
-}
-
 /* section 1 styles */
 
 #section-1 p {
@@ -272,19 +248,6 @@ i{
         gap: 70px;
     }
     
-    header{
-        justify-content: space-between;
-        background-color: rgb(82, 33, 88);
-        padding: 20px 40px;
-        border-radius: 10px;
-        margin-bottom: 45px;
-      }
-    header h1 {
-        font-size: 35px;
-    }
-    header p {
-        font-size: 30px;
-    }
     #J-i{
         padding: 30px;
         width: 30%;
