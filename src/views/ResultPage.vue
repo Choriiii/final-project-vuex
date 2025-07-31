@@ -42,11 +42,11 @@ export default {
     },
     methods: {
       goToCategories() {
-        this.quizStore.$reset()
+        this.quizStore.resetQuizData()
         this.$router.push('/app')
       },
       goHome() {
-        this.quizStore.$reset()
+        this.quizStore.resetQuizData()
         this.$router.push('/')
       }
     }

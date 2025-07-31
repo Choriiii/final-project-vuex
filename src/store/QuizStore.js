@@ -14,10 +14,9 @@ export const useQuizStore = defineStore('quizStore', {
   }),
   actions: {
     async fetchQuestions(category = null, difficulty = null) {
+      
+        this.resetQuizData();
 
-        this.$reset()
-        this.setUserId("test")
-        
         const params = {
             amount: 10,
             type: 'multiple',
@@ -80,6 +79,11 @@ export const useQuizStore = defineStore('quizStore', {
       if (!saved) return
 
       this.$patch(JSON.parse(saved))
+    },
+    resetQuizData() {
+      const currentUserId = this.userId
+      this.$reset()
+      this.setUserId(currentUserId)
     }
   },
   getters: {
