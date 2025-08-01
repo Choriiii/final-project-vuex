@@ -4,11 +4,7 @@ import ProfileCompo from "@/components/ProfileCompo.vue";
 import QuizPage from '@/views/QuizPage.vue';
 import ResultPage from '@/views/ResultPage.vue';
 import QuizApp from '@/views/QuizApp.vue';
-import { createPinia } from 'pinia'
 import { useUserStore } from '@/store/userStore'
-
-const pinia = createPinia(); // Piniaのインスタンスが必要
-let userStore;
 
 const routes = [
     {
@@ -48,16 +44,13 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to, from, next) => {
-  if (!userStore) {
-    userStore = useUserStore(pinia);
-    userStore.loadUser();
-  }
+router.beforeEach(async (to, from, next) => {
+ const userStore = useUserStore();
 
   const publicPages = ['home', 'ProfilePage'];
   const authRequired = !publicPages.includes(to.name);
 
-  if (authRequired && !userStore?.userId) {
+  if (authRequired && !userStore.isLogin) {
     next({ name: 'ProfilePage' });
   } else {
     next();

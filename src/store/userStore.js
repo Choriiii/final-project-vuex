@@ -42,6 +42,7 @@ export const useUserStore = defineStore('user', {
     localStorage.removeItem('quizStore')
 
     this.$reset()
+    this.userId = ''
     localStorage.removeItem('user')
    }
   },
